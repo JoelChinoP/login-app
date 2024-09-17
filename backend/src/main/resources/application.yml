@@ -3,16 +3,27 @@ spring:
     name: login-api
   jackson:
     property-naming-strategy: SNAKE_CASE
+  jpa:
+    hibernate:
+      ddl-auto: none  #none <create | create-drop | update | validate | none>
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        show_sql: true
+        use_sql_comments: true
 #  flyway:
 #    locations: classpath:/db/migration
 #    schemas: db-login-api
 #    baselineOnMigrate: true
 #    enabled: true
   flyway:
+    enabled: true
     locations: classpath:/db/migration
     schemas: login-api
     defaultSchema: login-api
-    createSchemas: false
+    createSchemas: true # create schema if not exists
+    baselineOnMigrate: true
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://${DB_LOGIN_HOST}:26024/defaultdb?sslmode=require
