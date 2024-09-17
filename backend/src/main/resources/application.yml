@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: login-api
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+#  flyway:
+#    locations: classpath:/db/migration
+#    schemas: db-login-api
+#    baselineOnMigrate: true
+#    enabled: true
+  flyway:
+    locations: classpath:/db/migration
+    schemas: login-api
+    defaultSchema: login-api
+    createSchemas: false
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_LOGIN_HOST}:26024/defaultdb?sslmode=require
+    username: ${DB_LOGIN_USER}
+    password: ${DB_LOGIN_PASSWORD}
