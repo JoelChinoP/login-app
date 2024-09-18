@@ -1,8 +1,8 @@
 -- Crear tabla de permisos
-CREATE TABLE permissions (
+CREATE TABLE permission (
   id BIGSERIAL PRIMARY KEY, -- ID del permiso
   name VARCHAR(100) UNIQUE NOT NULL, -- Nombre del permiso
   description VARCHAR(255), -- Descripción del permiso
-  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Fecha de creación
-  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Fecha de actualización
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Fecha de creación
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Fecha de actualización
 );

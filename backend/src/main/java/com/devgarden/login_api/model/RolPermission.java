@@ -1,6 +1,5 @@
 package com.devgarden.login_api.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,22 +7,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
-@Setter @Getter
+@Table(name = "rol_permission")
+@Getter @Setter
 @AllArgsConstructor @NoArgsConstructor
-public class Permission {
+public class RolPermission {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, unique = true, length = 100)
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "rol_id", nullable = false)
+    private Role role;
 
-    @Column(length = 255)
-    private String description;
+    @ManyToOne
+    @JoinColumn(name = "permission_id", nullable = false)
+    private Permission permission;
 
     @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
@@ -31,9 +32,7 @@ public class Permission {
     @Column(name = "updated_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "permission", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<RolPermission> rolPermissions;
+
 
 
     @PrePersist

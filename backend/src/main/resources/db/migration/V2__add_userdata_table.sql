@@ -6,6 +6,6 @@ CREATE TABLE user_data (
   lastname VARCHAR(100) NOT NULL, -- Apellidos
   address VARCHAR(255), -- Dirección
   phone VARCHAR(20), -- Teléfono
-  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Fecha de creación
-  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Fecha de actualización
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Fecha de creación
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Fecha de actualización
 );

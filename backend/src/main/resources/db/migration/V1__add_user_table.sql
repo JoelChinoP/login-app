@@ -10,6 +10,6 @@ CREATE TABLE "user" (
   is_locked BOOLEAN DEFAULT FALSE, -- Usuario bloqueado
   provider VARCHAR(255), -- Para OAuth (Google, Facebook, etc.)
   provider_id VARCHAR(255), -- ID del usuario en el proveedor externo
-  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Fecha de creación
-  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Fecha de actualización
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Fecha de creación
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Fecha de actualización
 );
