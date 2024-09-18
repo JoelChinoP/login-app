@@ -34,7 +34,11 @@ public class Role {
 
     @JsonIgnore
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<RolPermission> rolPermissions;
+    private List<RoleUser> roleUsers;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<RolePermission> rolePermissions;
 
 
 

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -33,7 +34,7 @@ public class User {
     @Column
     private LocalDateTime lastLogin;
 
-    @Column(columnDefinition = "INT DEFAULT 0")
+    @Column(name = "failed_attempts", columnDefinition = "INT DEFAULT 0")
     private Integer failedAttempts;
 
     @Column(name = "is_locked", columnDefinition = "BOOLEAN DEFAULT FALSE")
@@ -54,6 +55,12 @@ public class User {
     @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private UserData userData;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<RoleUser> roleUsers;
+
+
 
     @PrePersist
     protected void onCreate() {
