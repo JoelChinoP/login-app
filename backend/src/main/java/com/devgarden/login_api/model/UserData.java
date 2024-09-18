@@ -28,16 +28,16 @@ public class UserData {
     @Column(nullable = false, length = 100)
     private String lastname;
 
-    @Column(name = "address", length = 255)
+    @Column(length = 255)
     private String address;
 
-    @Column(name = "phone", length = 20)
+    @Column(length = 20)
     private String phone;
 
-    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 
     @PrePersist

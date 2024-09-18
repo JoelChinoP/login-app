@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: login-api
+  profiles:
+    active: test
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop  # Crea las tablas al inicio y las elimina al final
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect  # Cambiado a H2
+        default_schema: login_api  # Para H2, usa guión bajo en lugar de guión
+        format_sql: true
+        show_sql: true
+        use_sql_comments: true
+
+  flyway:
+    enabled: true  # No se necesita Flyway para H2 en pruebas, pero si lo necesitas, puedes habilitarlo.
+    locations: classpath:/db/migration
+    schemas: login_api
+    defaultSchema: login_api
+    createSchemas: true  # Crea el esquema si no existe
+    baselineOnMigrate: true
+
+  datasource:
+    driverClassName: org.h2.Driver  # Driver para H2
+    url: jdbc:h2:mem:login-api-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE  # Base de datos en memoria
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console

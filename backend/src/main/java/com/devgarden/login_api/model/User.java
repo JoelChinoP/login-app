@@ -34,22 +34,22 @@ public class User {
     @Column
     private LocalDateTime lastLogin;
 
-    @Column(name = "failed_attempts", columnDefinition = "INT DEFAULT 0")
+    @Column(columnDefinition = "INT DEFAULT 0")
     private Integer failedAttempts;
 
-    @Column(name = "is_locked", columnDefinition = "BOOLEAN DEFAULT FALSE")
+    @Column(columnDefinition = "BOOLEAN DEFAULT FALSE")
     private Boolean isLocked = false;
 
     @Column(length = 255)
     private String provider;
 
-    @Column(name = "provider_id", length = 255)
+    @Column(length = 255)
     private String providerId;
 
-    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime updatedAt;
 
     @JsonIgnore
